@@ -33,10 +33,10 @@ public class Main {
         }
         //Ahora muestro los resultados
         System.out.printf("Resultado para '%s': \n",phrase);
-        System.out.println("");
         for (Map.Entry<String,Integer> entry : hashMap.entrySet()){
             System.out.printf("Vocal: %s. Conteo: %d \n",entry.getKey(), entry.getValue());
         }
+        System.out.println("La cantidad de caracteres es :"+phrase.length());
 
     }
     private static boolean esVocal(char caracter){
