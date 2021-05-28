@@ -5,7 +5,7 @@ import java.util.Locale;
 public class Electrodomestico {
     //Variables
     private String color = COLOR;
-    private double precio_base=100;
+    private double precio=100;
     private double peso = 5;
     private char consumo=CONSUMO;
     private static final char CONSUMO= 'F';
@@ -19,13 +19,13 @@ public class Electrodomestico {
 
     //Constructor con precio y peso
     public Electrodomestico(double precio, double peso){
-        this.precio_base = precio;
+        this.precio = precio;
         this.peso = peso;
     }
 
     //Constructor con todos los argumentos
     public Electrodomestico(double precio, double peso,String color){
-        this.precio_base = precio;
+        this.precio = precio;
         this.peso = peso;
         this.color = color;
     }
@@ -38,12 +38,12 @@ public class Electrodomestico {
         this.color = color;
     }
 
-    public double getPrecio_base() {
-        return precio_base;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setPrecio_base(double precio_base) {
-        this.precio_base = precio_base;
+    public void setPrecio(double precio_base) {
+        this.precio = precio;
     }
 
     public double getPeso() {
@@ -62,18 +62,47 @@ public class Electrodomestico {
         this.consumo = consumo;
     }
 
-    public void comprobarConsumoEnergetico(char letra){
+    private boolean comprobarConsumoEnergetico(char letra){
+        boolean valida = false;
         for (int i = 0; i < letras.length ; i++) {
             if(letra == letras[i]){
                 this.consumo = letras[i];
+                valida=true;
                 break;
             }else{
                 this.consumo =CONSUMO;
+                valida = false;
             }
-
         }
-        System.out.println("CONSUMO"+this.consumo);
+        return valida;
+    }
 
+    public void calcularConsumo(){
+        boolean valida_c = comprobarConsumoEnergetico(getConsumo());
+        if (valida_c == true){
+            switch (consumo){
+                case 'A':
+                    precio = precio +100;
+                    break;
+                case 'B':
+                    precio = precio +80;
+                    break;
+                case 'C':
+                    precio = precio +60;
+                    break;
+                case 'D':
+                    precio = precio+50;
+                    break;
+                case 'E':
+                    precio = precio+30;
+                    break;
+                default:
+                    precio =precio+10;
+            }
+        }else{
+            System.out.println("No ha ingresado un consumo valido");
+        }
+        System.out.println("Precio : "+precio);
     }
 
     public void comprobarColor(String color){
@@ -89,6 +118,34 @@ public class Electrodomestico {
         System.out.println("COLOR"+this.color);
 
     }
+
+    public void calcularTamanio(){
+        if(peso<20){
+            precio = precio +10;
+        }else if(peso<50){
+            precio = precio +50;
+        }else if(peso<80) {
+            precio = precio + 80;
+        }else{
+            precio = precio + 100;
+        }
+    }
+
+    public void precioBase(){
+        calcularConsumo();
+        calcularTamanio();
+    }
+
+    protected void sumarAdicional( double adicional){
+        precio = precio + adicional;
+        System.out.println("ENTRE EN ADICIONAL"+precio);
+    }
+
+    public void precioFinal(){
+        precioBase();
+    }
+
+
 
 
 }
