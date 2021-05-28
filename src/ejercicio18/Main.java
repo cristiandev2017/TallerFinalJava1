@@ -1,6 +1,4 @@
 package ejercicio18;
 
-public class App {
-
-
+public class Main {
 }
