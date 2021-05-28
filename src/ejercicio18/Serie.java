@@ -2,11 +2,11 @@ package ejercicio18;
 
 public class Serie implements Entregable {
 
-    private static int SEASON_DEFAULT = 3;
-    private static boolean SUBMITTED_DEFAULT = false;
+    private static final int NUMEROTEMP = 3;
+    private static final boolean ENTREGAGO = false;
     private String titulo;
-    private int numerotemp;
-    private boolean entregado;
+    private int numerotemp = NUMEROTEMP;
+    private boolean entregado=ENTREGAGO;
     private String genero;
     private String creador;
 
@@ -59,6 +59,17 @@ public class Serie implements Entregable {
     }
 
     @Override
+    public String toString() {
+        return "Serie{" +
+                "titulo='" + titulo + '\'' +
+                ", numerotemp=" + numerotemp +
+                ", entregado=" + entregado +
+                ", genero='" + genero + '\'' +
+                ", creador='" + creador + '\'' +
+                '}';
+    }
+
+    @Override
     public void entregar(){
         this.entregado = true;
     }
@@ -72,6 +83,7 @@ public class Serie implements Entregable {
     public boolean isEntregado() {
         return entregado;
     }
+
 
 
 }
