@@ -24,10 +24,11 @@ public class Electrodomestico {
     }
 
     //Constructor con todos los argumentos
-    public Electrodomestico(double precio, double peso,String color){
+    public Electrodomestico(double precio, double peso, String color, char consumo){
         this.precio = precio;
         this.peso = peso;
         this.color = color;
+        this.consumo = consumo;
     }
 
     public String getColor() {
@@ -138,14 +139,12 @@ public class Electrodomestico {
 
     protected void sumarAdicional( double adicional){
         precio = precio + adicional;
-        System.out.println("ENTRE EN ADICIONAL"+precio);
     }
 
-    public void precioFinal(){
+    public double precioFinal(){
         precioBase();
+        return precio;
     }
-
-
 
 
 }

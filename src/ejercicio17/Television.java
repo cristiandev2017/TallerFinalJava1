@@ -10,8 +10,8 @@ public class Television extends Electrodomestico {
 
     }
     //Constructor con el precio y peso
-    public Television(double precio, double peso) {
-    super(precio,peso);
+    public Television(double precio, double peso, String color,char consumo) {
+    super(precio,peso,color,consumo);
     }
 
     //Constructor con resolucion,sintoniza y demas atributos
@@ -52,10 +52,11 @@ public class Television extends Electrodomestico {
         }
     }
 
-    public void precioFinal(){
+    public double precioFinal(){
         super.precioFinal();
         obtenerPrecioPulgadas();
         obtenerPrecioSintonizador();
+        return getPrecio();
     }
 
 
