@@ -4,97 +4,74 @@ public class Serie implements Entregable {
 
     private static int SEASON_DEFAULT = 3;
     private static boolean SUBMITTED_DEFAULT = false;
-    private String tittle;
-    private int numberSeason;
-    private boolean submitted;
-    private String genreFilm;
-    private String creator;
+    private String titulo;
+    private int numerotemp;
+    private boolean entregado;
+    private String genero;
+    private String creador;
 
-    public Serie(String tittle, int numberSeason, String genreFilm, String creator){
-        this(tittle, creator);
-        this.numberSeason = numberSeason;
-        this.genreFilm = genreFilm;
+    public Serie(String titulo, int numerotemp, String genero, String creador){
+        this.titulo=titulo;
+        this.creador=creador;
+        this.numerotemp = numerotemp;
+        this.genero = genero;
     }
-
-    public Serie(String tittle, String creator){
+    //Titulo y creador
+    public Serie(String titulo, String creador){
         this();
-        this.tittle = tittle;
-        this.creator = creator;
+        this.titulo = titulo;
+        this.creador = creador;
     }
-
+    //Por defecto
     public Serie(){
-        this.tittle = "";
-        this.numberSeason = SEASON_DEFAULT;
-        this.submitted = SUBMITTED_DEFAULT;
-        this.genreFilm = "";
-        this.creator = "";
     }
 
-    public int getNumberSeason() {
-        return numberSeason;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNumberSeason(int numberSeason) {
-        this.numberSeason = numberSeason;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getCreator() {
-        return creator;
+    public int getNumerotemp() {
+        return numerotemp;
     }
 
-    public void setCreator(String creator) {
-        this.creator = creator;
+    public void setNumerotemp(int numerotemp) {
+        this.numerotemp = numerotemp;
     }
 
-    public String getTittle() {
-        return tittle;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
-    public String getGenreFilm() {
-        return genreFilm;
+    public String getCreador() {
+        return creador;
     }
 
-    public void setGenreFilm(String genreFilm) {
-        this.genreFilm = genreFilm;
-    }
-
-    @Override
-    public String toString() {
-        return "Nombre de la serie: '" + tittle + '\'' +
-                "\n Número de temporadas: " + numberSeason +
-                "\n Entregado: " + submitted +
-                "\n Genero='" + genreFilm + '\'' +
-                "\n Creador='" + creator + '\'';
+    public void setCreador(String creador) {
+        this.creador = creador;
     }
 
     @Override
     public void entregar(){
-        this.submitted = true;
+        this.entregado = true;
     }
 
     @Override
     public void devolver() {
-        this.submitted = false;
+        this.entregado = false;
     }
 
     @Override
     public boolean isEntregado() {
-        return submitted;
+        return entregado;
     }
 
-    @Override
-    public boolean compareTo(Object a) {
-        boolean valueReturn;
-        if(this.getNumberSeason() > ((Serie)a).getNumberSeason()){
-            valueReturn = true;
-        }
-        else{
-            valueReturn = false;
-        }
-        return valueReturn;
-    }
+
 }
